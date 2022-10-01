@@ -130,7 +130,7 @@ const findEditThenSave = (personId, done) => {
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
 
-  Person.findByIdAndUpdate(
+  Person.findAndUpdate(
     {name: personName}, 
     {age: ageToSet}, 
     {new: true}, 
