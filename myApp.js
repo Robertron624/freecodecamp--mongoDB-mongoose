@@ -155,7 +155,7 @@ const removeManyPeople = (done) => {
   },
   function(err, data){
     if(err) return console.log(err)
-    done(data)
+    done(null, data)
   }
   )
 
