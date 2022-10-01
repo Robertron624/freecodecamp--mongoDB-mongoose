@@ -6,6 +6,8 @@ try {
 } catch (e) {
   console.log(e);
 }
+const Schema = mongoose.Schema
+
 
 try{
   mongoose.connect(process.env.MONGO_URI, {useNewUrlParser:true, useUnifiedTopology:true})
@@ -14,7 +16,26 @@ try{
   console.error('ERROR al tratar de conectarse a la BD')
 }
 
-let Person;
+let personSchema = new Schema({
+  name :{
+    type: String,
+    required: true,
+    unique: false,
+  },
+  age: {
+    type: Number,
+    required: false,
+  },
+  favoriteFoods: {
+    type:Array,
+    required: false
+  }
+})
+
+
+let Person = mongoose.model('Person', personSchema)
+
+console.log('Persona creada a partir de modelo ->', Person)
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
